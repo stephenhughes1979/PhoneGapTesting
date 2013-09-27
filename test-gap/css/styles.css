@@ -13,6 +13,10 @@ body {
     position: relative;
 }
 
+.grey-box {
+    background: #AAAAAA;
+}
+
 .header {
     background: #666;
     -webkit-background-size: 1px 44px;
