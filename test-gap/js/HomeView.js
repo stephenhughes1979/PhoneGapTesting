@@ -40,7 +40,7 @@ var HomeView = function(store) {
                         $('body').html(new SearchAgentView().render().el);
                     },  
                     error: function(httpRequest, message, errorThrown) {
-                        alert("Login Failed");
+                        navigator.notification.alert("Login Failed", null, title, 'OK');
                     }
                 });
             },
