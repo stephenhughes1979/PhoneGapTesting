@@ -2,10 +2,14 @@ var SearchAgentView = function() {
 
     this.initialize = function() {
         this.el = $('<div/>');
+        this.el.on('click', '.btn-back', this.Back);
     };
 
+    this.Back = function() {
+        $('body').html(new HomeView().render().el);
+    };
+    
     this.render = function() {
-        alert('in render');
         this.el.html(SearchAgentView.template());
         return this;
     };

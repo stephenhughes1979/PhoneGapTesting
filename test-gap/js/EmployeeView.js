@@ -45,43 +45,6 @@ var EmployeeView = function(employee) {
     this.changePicture = function(event) {
         event.preventDefault();
         console.log('changePicture');
-        
-        $.ajax({
-            type: "POST",
-            url:"https://sse0389.allstate.com",
-            data: JSON.stringify(usercred),
-            contentType: "application/json; charset=utf-8",
-            beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer 2386e2b7-2153-4c62-ac6c-586b12b3f2a5');
-
-                },
-            success: function (data) {
-                console.log(data);
-                alert("Data loaded: " + data);
-            },
-            error: function(httpRequest, message, errorThrown) {
-                alert("error: " + errorThrown);
-            }
-        });
-        
-        /*var usercred = {"InputPayload":{"UserName":"myqatr1015", "Password":"Password1"},"Header":{"SendingSystemCode":"A3C98370-A0FC-41cf-A5AD-281F4CDE43CE","SendingSystemName":"E7065EE6-8A5F-47e2-97A0-17BAF6D5B67B"}};
-        $.ajax({
-            type: "POST",
-            url:"https://sgglext-dv.allstate.com/mobile/r2r/customerservice/authenticatecustomercredentials",
-            data: JSON.stringify(usercred),
-            contentType: "application/json; charset=utf-8",
-            beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer 2386e2b7-2153-4c62-ac6c-586b12b3f2a5');
-
-                },
-            success: function (data) {
-                console.log(data);
-                alert("Data loaded: " + data);
-            },
-            error: function(httpRequest, message, errorThrown) {
-                alert("error: " + errorThrown);
-            }
-        });*/
 
         return false;
     };
