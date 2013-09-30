@@ -31,10 +31,9 @@ var AgentView = function(agent) {
             return;
         }
         var contact = navigator.contacts.create();
-        contact.name = {givenName: app.currentEmployee.firstName, familyName:  app.currentEmployee.lastName};
+        contact.name = {givenName: agent.firstname, familyName:  agent.lastName};
         var phoneNumbers = [];
-        phoneNumbers[0] = new ContactField('work', app.currentEmployee.officePhone, false);
-        phoneNumbers[1] = new ContactField('mobile', app.currentEmployee.cellPhone, true); // preferred number
+        phoneNumbers[0] = new ContactField('work', agent.phone, false);
         contact.phoneNumbers = phoneNumbers;
         contact.save();
         return false;

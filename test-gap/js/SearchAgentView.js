@@ -11,7 +11,7 @@ var SearchAgentView = function() {
     };
     
     this.GoToAgent = function() {
-        var selectedAgent = new Agent("Jim Slip", "07889909076", "My New Raod", "shugh@allstate.com");
+        var selectedAgent = new Agent("Jim Slip", "97889909076", "My New Raod", "shugh@allstate.com");
         $('body').html(new AgentView(selectedAgent).render().el);
     };
     

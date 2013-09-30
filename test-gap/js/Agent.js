@@ -13,13 +13,14 @@ var Class = function(methods) {
 };
 
 var Agent = Class({ 
-    initialize: function(name, phone, address, email) {
-        this.name = name;
+    initialize: function(firstname, lastname, phone, address, email) {
+        this.firstname = name;
+        this.lastname = name;
         this.phone  = phone;
         this.address = address;
         this.email = email;
     },
     toString: function() {
-        return "My name is "+this.name+" and I am "+this.age+" years old.";
+        return "My name is "+this.firstname+" and I am "+this.age+" years old.";
     }
 }); 
