@@ -13,6 +13,7 @@
     <div class="ui-bar ui-bar-b">
 	<h3>Allstate</h3>
 </div>
+
     <div class='grey-box'>
         <center>
             <b>Manage Your Accounts</b><br>
@@ -37,17 +38,49 @@
         Enter Name<br>
         <input type="text" name="textLastName"/><input type="button" class="btn-searchByLastName" value="GO">
         <hr>
-        Saved Agents
+        Saved Agents<br><br>
+        <input type="button" value="go to Agent" class="btn-viewAgent">
     </div>
 </script>
 
+<script id="agent-tpl" type="text/x-handlebars-template">
+    <div class="ui-bar ui-bar-b">
+	<h3>Allstate</h3>
+</div>
+
+    <div>
+        <center>
+            <table>
+                <tr>
+                    <td><img src="img/Michael_Scott.jpg"></td>
+                    <td><b>Services:</b><br>
+                    Financial<br>
+                    Insurance<br><br>
+                    <b>Hours:</b><br>
+                    Mon-Fri: 8:00 am - 5:00 pm<br>
+                    Other Times by Appointment</td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="phone"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="email"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" class="add-contact-btn" value="Add to Contacts"></td>
+                </tr>
+            
+            </table>
+        </center>
+    </div>
+</script>
     
 <script src="phonegap.js"></script>
 <script src="lib/jquery-1.8.2.min.js"></script>
 <script src="lib/handlebars.js"></script>
 <script src="js/storage/memory-store.js"></script>
 <script src="js/HomeView.js"></script>
-<script src="js/EmployeeView.js"></script>
+<script src="js/AgentView.js"></script>
 <script src="js/SearchAgentView.js"></script>
 <script src="js/main.js"></script>
 

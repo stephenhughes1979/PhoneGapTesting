@@ -7,14 +7,14 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>Employee Directory</name>
+    <name>Allstate Agent</name>
 
     <description>
-        A simple employee directory application
+        Allstate Agent App
     </description>
 
     <author href="http://coenraets.org" email="ccoenraets@gmail.com">
-        Christophe Coenraets
+        Stephen Hughes
     </author>
 
 </widget>
