@@ -1,15 +1,22 @@
-var AgentView = function(employee) {
+var AgentView = function(agent) {
 
     this.initialize = function() {
         this.el = $('<div/>');
         this.el.on('click', '.add-contact-btn', this.addToContacts);
+        this.el.on('click', '.sms-class', this.sendSMS);
     };
 
     this.render = function() {
+        console.log(agent);
         this.el.html(AgentView.template());
         return this;
     };
 
+    this.sendSMS = function(event) {
+        var url = 'sms:444';
+        window.open(url);
+    }
+    
     this.addToContacts = function(event) {
         event.preventDefault();
         console.log('addToContacts');

@@ -11,7 +11,8 @@ var SearchAgentView = function() {
     };
     
     this.GoToAgent = function() {
-        $('body').html(new AgentView().render().el);
+        var selectedAgent = new Agent("Jim Slip", "07889909076", "My New Raod");
+        $('body').html(new AgentView(selectedAgent).render().el);
     };
     
     this.render = function() {
