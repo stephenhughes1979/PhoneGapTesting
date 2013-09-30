@@ -14,8 +14,8 @@ var Class = function(methods) {
 
 var Agent = Class({ 
     initialize: function(firstname, lastname, phone, address, email) {
-        this.firstname = name;
-        this.lastname = name;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.phone  = phone;
         this.address = address;
         this.email = email;
