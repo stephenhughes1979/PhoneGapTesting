@@ -4,6 +4,7 @@ var AgentView = function(agent) {
         this.el = $('<div/>');
         this.el.on('click', '.add-contact-btn', this.addToContacts);
         this.el.on('click', '.sms-class', this.sendSMS);
+        this.el.on('click', '.email-class', this.sendEmail);
     };
 
     this.render = function() {
@@ -13,7 +14,12 @@ var AgentView = function(agent) {
     };
 
     this.sendSMS = function(event) {
-        var url = 'sms:444';
+        var url = 'sms:' + agent.phone;
+        window.open(url);
+    }
+    
+    this.sendEmail = function(event) {
+        var url = 'mailto:' + agent.email;
         window.open(url);
     }
     
