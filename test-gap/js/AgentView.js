@@ -36,6 +36,7 @@ var AgentView = function(agent) {
         phoneNumbers[0] = new ContactField('work', agent.phone, false);
         contact.phoneNumbers = phoneNumbers;
         contact.save();
+        alert('Contact Added');
         return false;
     };
 
