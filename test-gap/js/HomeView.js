@@ -16,7 +16,8 @@ var HomeView = function(store) {
         var password = $('.fpassword').val();
         var usercred = {"InputPayload":{"UserName":username, "Password":password},"Header":{"SendingSystemCode":"A3C98370-A0FC-41cf-A5AD-281F4CDE43CE","SendingSystemName":"E7065EE6-8A5F-47e2-97A0-17BAF6D5B67B"}};
         var databuiltup = "grant_type=password&username=" + username + "&password=" + password;
-
+        var accesstoken = '';
+        
         $.ajax({
             type: "POST",
             url:"https://sgglext-dv.allstate.com/auth/oauth/v2/token",
@@ -27,17 +28,18 @@ var HomeView = function(store) {
 
                 },
             success: function (data) {
+                accesstoken = data.access_token;
                 $.ajax({
                     type: "POST",
                     url:"https://sgglext-dv.allstate.com/mobile/r2r/customerservice/authenticatecustomercredentials",
                     data: JSON.stringify(usercred),
                     contentType: "application/json; charset=utf-8",
                     beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + data.access_token);
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + accesstoken);
 
                     },
                     success: function (data) {
-                        $('body').html(new SearchAgentView().render().el);
+                        $('body').html(new SearchAgentView(accesstoken).render().el);
                     },  
                     error: function(httpRequest, message, errorThrown) {
                         navigator.notification.alert("The Username or Password entered was incorrect", null, "Login Failure", 'OK');
