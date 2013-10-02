@@ -3,7 +3,8 @@ $(document).on('pageshow', '#detailsPage', function(event) {
     console.log(agent.FirstName);
     $('#fullName').text(agent.FirstName + ' ' + agent.LastName);
     $('#employeeTitle').text(agent.AgencyName);
-    $('#employeePic').attr("src",agent.PhotoUrl);
+    $('#employeeTitle').text(agent.AgencyName);
+    $('#City').text("src",agent.Address1 + ' ' + agent.City + " " +agent.State);
 });
 
 this.sendSMS = function(event) {
