@@ -1,3 +1,11 @@
+function onDeviceReady() {
+    if (parseFloat(window.device.version) === 7.0) {
+          document.body.style.marginTop = "20px";
+    }
+}
+  
+document.addEventListener('deviceready', onDeviceReady, false);
+
 $(document).on('pageshow', '#loginPage', function(event) {
    
 });
