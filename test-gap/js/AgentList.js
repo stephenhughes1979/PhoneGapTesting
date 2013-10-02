@@ -1,6 +1,9 @@
 var agents = null;
-    
+
 $(document).on('pageshow', '#listPage', function(event) {
+    console.log(opts);
+    var target = document.getElementById('preview1');
+    var spinner = new Spinner(opts).spin(target);
     var accesstoken = window.localStorage.getItem("accessToken");
     var zip = window.localStorage.getItem("zipsearchvalue");
     var usercred = {"InputPayload":{"ZIP":zip, "MaxRows":"15"},"Header":{"SendingSystemCode":"A3C98370-A0FC-41cf-A5AD-281F4CDE43CE","SendingSystemName":"E7065EE6-8A5F-47e2-97A0-17BAF6D5B67B"}};
@@ -22,6 +25,7 @@ $(document).on('pageshow', '#listPage', function(event) {
                     output += '<li><a href="javascript:GoToAgent(' + index + ');">' + value.FirstName + ' ' + value.LastName + '</a></li>';
                 });
                 $('#listview').append(output);
+                spinner.stop();
             },  
             error: function(httpRequest, message, errorThrown) {
                 alert(message + errorThrown, null, "Service Failure", 'OK');

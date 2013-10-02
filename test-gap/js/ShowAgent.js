@@ -1,10 +1,11 @@
 $(document).on('pageshow', '#detailsPage', function(event) {
     var agent = JSON.parse(window.localStorage.getItem("cachedAgent"));
-    console.log(agent.FirstName);
+    console.log(agent);
     $('#fullName').text(agent.FirstName + ' ' + agent.LastName);
     $('#employeeTitle').text(agent.AgencyName);
     $('#employeeTitle').text(agent.AgencyName);
-    $('#City').text("src",agent.Address1 + ' ' + agent.City + " " +agent.State);
+    var address = agent.PhysicalAddress;
+    $('#city').text(address.Address1 + ' ' + address.City + " " +address.State);
 });
 
 this.sendSMS = function(event) {
