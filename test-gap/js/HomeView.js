@@ -3,6 +3,7 @@ $(document).on('pageshow', '#loginPage', function(event) {
 });
 
 function SearchByZip() {
+    window.localStorage.setItem("zipsearchvalue", $('.textZip').val());
     $.mobile.changePage( "listview.html", {
       transition: "slide",
       reverse: true,

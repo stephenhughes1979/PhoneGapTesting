@@ -2,8 +2,8 @@ var agents = null;
     
 $(document).on('pageshow', '#listPage', function(event) {
     var accesstoken = window.localStorage.getItem("accessToken");
-
-    var usercred = {"InputPayload":{"ZIP":"60062", "MaxRows":"15"},"Header":{"SendingSystemCode":"A3C98370-A0FC-41cf-A5AD-281F4CDE43CE","SendingSystemName":"E7065EE6-8A5F-47e2-97A0-17BAF6D5B67B"}};
+    var zip = window.localStorage.getItem("zipsearchvalue");
+    var usercred = {"InputPayload":{"ZIP":zip, "MaxRows":"15"},"Header":{"SendingSystemCode":"A3C98370-A0FC-41cf-A5AD-281F4CDE43CE","SendingSystemName":"E7065EE6-8A5F-47e2-97A0-17BAF6D5B67B"}};
     
     
     $.ajax({
