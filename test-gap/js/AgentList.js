@@ -28,7 +28,7 @@ $(document).on('pageshow', '#listPage', function(event) {
                 spinner.stop();
             },  
             error: function(httpRequest, message, errorThrown) {
-                alert(message + errorThrown, null, "Service Failure", 'OK');
+                 navigator.notification.alert(message + errorThrown, null, "Service Failure", 'OK');
             }
         });    
 });

@@ -5,32 +5,62 @@ $(document).on('pageshow', '#detailsPage', function(event) {
     $('#employeeTitle').text(agent.AgencyName);
     $('#employeeTitle').text(agent.AgencyName);
     var address = agent.PhysicalAddress;
+    $('#employeePic').attr('src', agent.PhotoUrl);
     $('#city').text(address.Address1 + ' ' + address.City + " " +address.State);
 });
 
-this.sendSMS = function(event) {
-        var url = 'sms:' + agent.phone;
-        window.open(url);
-    }
+function sendSMS() {
+    var agent = JSON.parse(window.localStorage.getItem("cachedAgent"));
+    console.log(agent);
+    var url = 'sms:' + agent.Phone;
+    window.open(url);
+}
     
-this.sendEmail = function(event) {
-        var url = 'mailto:' + agent.email;
-        window.open(url);
-    }
+function sendEmail() {
+    var agent = JSON.parse(window.localStorage.getItem("cachedAgent"));
+    var url = 'mailto:' + agent.Email;
+    window.open(url);
+}
+   
+function callAgent() {
+    var agent = JSON.parse(window.localStorage.getItem("cachedAgent"));
+    var url = 'tel:+' + agent.Phone;
+    window.open(url);
+}
+
+function removeFromContacts() {
+    var agent = JSON.parse(window.localStorage.getItem("cachedAgent"));
     
-this.addToContacts = function(event) {
-        event.preventDefault();
-        console.log('addToContacts');
-        if (!navigator.contacts) {
-            app.showAlert("Contacts API not supported", "Error");
-            return;
-        }
-        var contact = navigator.contacts.create();
-        contact.name = {givenName: agent.firstname, familyName:  agent.lastName};
-        var phoneNumbers = [];
-        phoneNumbers[0] = new ContactField('work', agent.phone, false);
-        contact.phoneNumbers = phoneNumbers;
-        contact.save();
-        alert('Contact Added');
-        return false;
-    };
+    var options      = new ContactFindOptions();
+    options.filter   = agent.FirstName + ' ' + agent.LastName;
+    options.multiple = true;
+    var fields       = ["displayName", "name"];
+    navigator.contacts.find(fields, onSuccess, onError, options);
+}
+            function onSuccess(contacts) {
+                for (var i = 0; i < contacts.length; i++) {
+                    contacts[i].remove();
+                }
+            }
+
+            function onError(contactError) {
+                navigator.notification.alert(contactError, null, "Contacts Delete Fail", 'OK');
+            }
+
+function addToContacts() {
+    var agent = JSON.parse(window.localStorage.getItem("cachedAgent"));
+    event.preventDefault();
+    console.log('addToContacts');
+    if (!navigator.contacts) {
+        app.showAlert("Contacts API not supported", "Error");
+        return;
+    }
+    var contact = navigator.contacts.create();
+    contact.name = {givenName: agent.FirstName, familyName:  agent.LastName};
+    var phoneNumbers = [];
+    phoneNumbers[0] = new ContactField('work', agent.Phone, false);
+    contact.phoneNumbers = phoneNumbers;
+    contact.save();
+    alert('Contact Added');
+    return false;
+};
