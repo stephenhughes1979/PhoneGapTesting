@@ -9,6 +9,22 @@ $(document).on('pageshow', '#detailsPage', function(event) {
     $('#city').text(address.Address1 + ' ' + address.City + " " +address.State);
 });
 
+function getPicture() {
+    navigator.camera.getPicture(piconSuccess, piconFail, { quality: 50, 
+    destinationType: Camera.DestinationType.FILE_URI }); 
+}
+
+function piconSuccess(imageURI) {
+    var image = document.getElementById('employeePic');
+    image.src = imageURI;
+    console.log(imageURI);
+    navigator.notification.alert("Image was not saved to device!", null, "Image Sent", 'OK');
+}
+
+function piconFail(message) {
+    alert('Failed because: ' + message);
+}
+
 function sendSMS() {
     var agent = JSON.parse(window.localStorage.getItem("cachedAgent"));
     console.log(agent);
