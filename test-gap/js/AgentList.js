@@ -1,3 +1,5 @@
+var agents = null;
+    
 $(document).on('pageshow', '#listPage', function(event) {
     var accesstoken = window.localStorage.getItem("accessToken");
 
@@ -15,18 +17,24 @@ $(document).on('pageshow', '#listPage', function(event) {
             },
             success: function (data) {
                 var output = '';
-                window.localStorage.setItem("cachedAgents", data.OutputPayload.Agents);
+                agents = data.OutputPayload.Agents;
                 $.each(data.OutputPayload.Agents, function(index, value){
-                    output += '<li><a href="viewPerson.html?id=' + index + '">' + value.FirstName + ' ' + value.LastName + '</a></li>';
+                    output += '<li><a href="javascript:GoToAgent(' + index + ');">' + value.FirstName + ' ' + value.LastName + '</a></li>';
                 });
                 $('#listview').append(output);
             },  
             error: function(httpRequest, message, errorThrown) {
                 alert(message + errorThrown, null, "Service Failure", 'OK');
             }
-        });
-
-    
-    
+        });    
 });
+
+function GoToAgent(index) {
+    window.localStorage.setItem("cachedAgent", JSON.stringify(agents[index]));
+    $.mobile.changePage( "viewPerson.html", {
+                          transition: "slide",
+                          reverse: true,
+                          changeHash: true
+                        });
+}
     

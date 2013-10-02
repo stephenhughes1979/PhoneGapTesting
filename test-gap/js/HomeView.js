@@ -2,6 +2,14 @@ $(document).on('pageshow', '#loginPage', function(event) {
    
 });
 
+function SearchByZip() {
+    $.mobile.changePage( "listview.html", {
+      transition: "slide",
+      reverse: true,
+      changeHash: true
+    });
+}
+
 function Login(){
         var username = $('.fname').val();
         var password = $('.fpassword').val();
@@ -31,11 +39,11 @@ function Login(){
 
                     },
                     success: function (data) {
-                        $.mobile.changePage( "SearchAgent.html", {
-  transition: "pop",
-  reverse: false,
-  changeHash: false
-});
+                        $.mobile.changePage( "#homePage", {
+                          transition: "slide",
+                          reverse: true,
+                          changeHash: true
+                        });
                     },  
                     error: function(httpRequest, message, errorThrown) {
                         navigator.notification.alert("The Username or Password entered was incorrect", null, "Login Failure", 'OK');

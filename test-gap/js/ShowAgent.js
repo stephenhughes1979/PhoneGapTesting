@@ -1,5 +1,34 @@
 $(document).on('pageshow', '#detailsPage', function(event) {
-    var agents = window.localStorage.getItem("cachedAgents");
-    console.log(agents);
-	$('#fullName').val = agents[0].FirstName;
+    var agent = JSON.parse(window.localStorage.getItem("cachedAgent"));
+    console.log(agent.FirstName);
+    $('#fullName').text(agent.FirstName + ' ' + agent.LastName);
+    $('#employeeTitle').text(agent.AgencyName);
+    $('#employeePic').attr("src",agent.PhotoUrl);
 });
+
+this.sendSMS = function(event) {
+        var url = 'sms:' + agent.phone;
+        window.open(url);
+    }
+    
+this.sendEmail = function(event) {
+        var url = 'mailto:' + agent.email;
+        window.open(url);
+    }
+    
+this.addToContacts = function(event) {
+        event.preventDefault();
+        console.log('addToContacts');
+        if (!navigator.contacts) {
+            app.showAlert("Contacts API not supported", "Error");
+            return;
+        }
+        var contact = navigator.contacts.create();
+        contact.name = {givenName: agent.firstname, familyName:  agent.lastName};
+        var phoneNumbers = [];
+        phoneNumbers[0] = new ContactField('work', agent.phone, false);
+        contact.phoneNumbers = phoneNumbers;
+        contact.save();
+        alert('Contact Added');
+        return false;
+    };
