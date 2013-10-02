@@ -1,6 +1,6 @@
 function onDeviceReady() {
     if (parseFloat(window.device.version) === 7.0) {
-          document.body.style.marginTop = "20px";
+          document.body.style.marginTop = "15px";
     }
 }
   
@@ -28,6 +28,7 @@ function Login(){
         
         $.ajax({
             type: "POST",
+            cache: false,
             url:"https://sgglext-dv.allstate.com/auth/oauth/v2/token",
             data: databuiltup,
             contentType: "application/x-www-form-urlencoded",
@@ -40,6 +41,7 @@ function Login(){
                 window.localStorage.setItem("accessToken", accesstoken);
                 $.ajax({
                     type: "POST",
+                    cache: false,
                     url:"https://sgglext-dv.allstate.com/mobile/r2r/customerservice/authenticatecustomercredentials",
                     data: JSON.stringify(usercred),
                     contentType: "application/json; charset=utf-8",
@@ -48,6 +50,8 @@ function Login(){
 
                     },
                     success: function (data) {
+                        console.log(data);
+                        alert(data.OutputPayload.cookie);
                         $.mobile.changePage( "#homePage", {
                           transition: "slide",
                           reverse: true,
