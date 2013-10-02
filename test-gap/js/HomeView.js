@@ -1,17 +1,8 @@
-var HomeView = function(store) {
+$(document).on('pageshow', '#loginPage', function(event) {
+   
+});
 
-    this.initialize = function() {
-        // Define a div wrapper for the view. The div wrapper is used to attach events.
-        this.el = $('<div/>');
-        this.el.on('click', '.btn-login', this.Login);
-    };
-
-    this.render = function() {
-        this.el.html(HomeView.template());
-        return this;
-    };
-    
-    this.Login = function() {
+function Login(){
         var username = $('.fname').val();
         var password = $('.fpassword').val();
         var usercred = {"InputPayload":{"UserName":username, "Password":password},"Header":{"SendingSystemCode":"A3C98370-A0FC-41cf-A5AD-281F4CDE43CE","SendingSystemName":"E7065EE6-8A5F-47e2-97A0-17BAF6D5B67B"}};
@@ -29,6 +20,7 @@ var HomeView = function(store) {
                 },
             success: function (data) {
                 accesstoken = data.access_token;
+                window.localStorage.setItem("accessToken", accesstoken);
                 $.ajax({
                     type: "POST",
                     url:"https://sgglext-dv.allstate.com/mobile/r2r/customerservice/authenticatecustomercredentials",
@@ -39,7 +31,11 @@ var HomeView = function(store) {
 
                     },
                     success: function (data) {
-                        $('body').html(new SearchAgentView(accesstoken).render().el);
+                        $.mobile.changePage( "SearchAgent.html", {
+  transition: "pop",
+  reverse: false,
+  changeHash: false
+});
                     },  
                     error: function(httpRequest, message, errorThrown) {
                         navigator.notification.alert("The Username or Password entered was incorrect", null, "Login Failure", 'OK');
@@ -51,9 +47,3 @@ var HomeView = function(store) {
             }
         });
     };
-
-    this.initialize();
-
-}
-
-HomeView.template = Handlebars.compile($("#home-tpl").html());

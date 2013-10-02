@@ -50,5 +50,3 @@ var AgentView = function(agent) {
     this.initialize();
 
 }
-
-AgentView.template = Handlebars.compile($("#agent-tpl").html());
