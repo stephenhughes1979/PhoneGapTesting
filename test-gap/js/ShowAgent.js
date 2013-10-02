@@ -40,6 +40,7 @@ function removeFromContacts() {
             function onSuccess(contacts) {
                 for (var i = 0; i < contacts.length; i++) {
                     contacts[i].remove();
+                    navigator.notification.alert("Contact Removed", null, "Contacts", 'OK');
                 }
             }
 
@@ -60,6 +61,6 @@ function addToContacts() {
     phoneNumbers[0] = new ContactField('work', agent.Phone, false);
     contact.phoneNumbers = phoneNumbers;
     contact.save();
-    alert('Contact Added');
+    navigator.notification.alert("Contact Added", null, "Contacts", 'OK');
     return false;
 };
