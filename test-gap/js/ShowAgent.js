@@ -49,10 +49,9 @@ function removeFromContacts() {
 
 function addToContacts() {
     var agent = JSON.parse(window.localStorage.getItem("cachedAgent"));
-    event.preventDefault();
     console.log('addToContacts');
     if (!navigator.contacts) {
-        app.showAlert("Contacts API not supported", "Error");
+        navigator.notification.alert("Contacts API not supported", null, "Error", 'OK');
         return;
     }
     var contact = navigator.contacts.create();
