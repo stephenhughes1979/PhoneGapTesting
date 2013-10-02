@@ -15,10 +15,10 @@ function getPicture() {
 }
 
 function piconSuccess(imageURI) {
-    var image = document.getElementById('employeePic');
-    image.src = imageURI;
+    //var image = document.getElementById('employeePic');
+    //image.src = imageURI;
     console.log(imageURI);
-    navigator.notification.alert("Image was not saved to device!", null, "Image Sent", 'OK');
+    navigator.notification.alert("Image was not saved to device!", null, "Image was sent to your agent", 'OK');
 }
 
 function piconFail(message) {
