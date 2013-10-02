@@ -21,7 +21,7 @@ var target = document.getElementById('preview');
 
 function onDeviceReady() {
     if (parseFloat(window.device.version) === 7.0) {
-          document.body.style.marginTop = "17px";
+          document.body.style.marginTop = "15px";
     }
 }
   
