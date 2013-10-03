@@ -17,4 +17,5 @@
         Stephen Hughes
     </author>
 
+    <gap:splash src="enum-splash.png" gap:platform="ios" width="320" height="480" />
 </widget>
