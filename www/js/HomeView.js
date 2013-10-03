@@ -19,13 +19,13 @@ var opts = {
 
 var target = document.getElementById('preview');
 
-function onDeviceReady() {
-    if (parseFloat(window.device.version) === 7.0) {
-          document.body.style.marginTop = "15px";
-    }
-}
+//function onDeviceReady() {
+    //if (parseFloat(window.device.version) === 7.0) {
+          //document.body.style.marginTop = "15px";
+    //}
+//}
   
-document.addEventListener('deviceready', onDeviceReady, false);
+//document.addEventListener('deviceready', onDeviceReady, false);
 
 $(document).on('pageshow', '#loginPage', function(event) {
         $.ajaxSetup({ cache: false });
