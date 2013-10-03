@@ -18,5 +18,5 @@
     </author>
 
     <icon src="allstate.png" />
-    <gap:splash src="enum-splash.png" gap:platform="ios" />
+    <gap:splash src="AllstateColour.png" gap:platform="ios" width="320" height="480" />
 </widget>
