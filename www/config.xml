@@ -17,5 +17,6 @@
         Stephen Hughes
     </author>
 
-    <gap:splash src="enum-splash.png" gap:platform="ios" width="320" height="480" />
+    <icon src="allstate-e1357652319917.png" />
+    <gap:splash src="allstate-e1357652319917.png" gap:platform="ios" width="320" height="480" />
 </widget>
