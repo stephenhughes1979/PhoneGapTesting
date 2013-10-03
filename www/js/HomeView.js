@@ -88,6 +88,7 @@ function Login(){
                     },  
                     error: function(httpRequest, message, errorThrown) {
                         navigator.notification.alert("The Username or Password entered was incorrect", null, "Login Failure", 'OK');
+                        spinner.stop();
                     }
                 });
             },
