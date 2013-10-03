@@ -25,6 +25,7 @@ $(document).on('pageshow', '#listPage', function(event) {
                     output += '<li><a href="javascript:GoToAgent(' + index + ');">' + value.FirstName + ' ' + value.LastName + '</a></li>';
                 });
                 $('#listview').append(output);
+                $('#listview').listview('refresh');
                 spinner.stop();
             },  
             error: function(httpRequest, message, errorThrown) {
